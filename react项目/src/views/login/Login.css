@@ -1,0 +1,44 @@
+html,body{
+    width: 100%;
+    height: 100%;
+}
+#root{
+    width: 100%;
+    height: 100%;
+}
+.app{
+    width: 100%;
+    height: 100%;
+}
+.login1{
+    background-image: url("./images/1.jpg") ;
+    width: 100%;
+    height: 100%;
+}
+.header{
+    height: 80px;
+    width: 100%;
+    background-color: rgb(51,51,51,0.9);
+}
+.header h1{
+    height: 80px;
+    line-height: 80px;
+    margin-left: 50px;
+    color: white;
+}
+.content{
+    padding: 35px;
+    margin: 0 auto;
+    width: 400px;
+    height: 300px;
+    background-color: rgba(52, 54, 11, 0.8);
+    margin-top: 80px;
+}
+.content h1{
+    color: white;
+    text-align: center;
+    font-weight: bold;
+}
+.login-form-button{
+    width: 100%;
+}

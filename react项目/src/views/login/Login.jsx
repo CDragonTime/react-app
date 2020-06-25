@@ -10,8 +10,8 @@ export default class Login extends Component {
         getUserLogin(values).then((result) => {
             console.log(result.code)
             if (result.code === 200) {
-                // 使用编程式路由进行成功的跳转
-                this.props.history.push("/admin/chart");
+                // 使用编程式路由进行成功的跳转,登陆的时候应该替换
+                this.props.history.replace("/admin/chart");
                 message.success("登陆成功")
             } else {
                 message.error("用户名或密码错误")

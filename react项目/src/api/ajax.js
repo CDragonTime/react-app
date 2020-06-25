@@ -1,7 +1,8 @@
 import axios from 'axios'
 
 export default function ajax(url = '', params = {}, type = 'GET') {
-    // 1. 变量
+    // 1. 变量,这个变量用来接收请求后的参数，并进行.then和.catch的操作
+    // 此函数的返回resolve和reject在合适的地方进行调用
     let promise;
     // 2. 返回一个promise对象
     return new Promise((resolve, reject) => {

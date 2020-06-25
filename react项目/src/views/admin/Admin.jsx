@@ -1,24 +1,25 @@
 import React, { Component } from "react"
 import "./admin.css"
 import { Route, Link } from "react-router-dom"
-import { Layout, Menu, Breadcrumb } from 'antd';
 import {
     DesktopOutlined,
     PieChartOutlined,
     FileOutlined,
     TeamOutlined,
     UserOutlined,
+    DownOutlined
 } from '@ant-design/icons';
+import { Layout, Menu, Breadcrumb, Avatar, Badge, Dropdown, message } from 'antd';
 import Chart from "../../components/echart/Chart.jsx"
 import Shop from "../../components/shop/Shop.jsx"
 import UserAdd from "../../components/user/UserAdd"
 import UserCounter from "../../components/user/UserCounter"
 import UserManager from "../../components/user/UserManager"
-import Error from "../404/404.jsx"
-import { Avatar, Badge } from 'antd'
+
 
 const { Header, Content, Footer, Sider } = Layout;
 const { SubMenu } = Menu;
+
 
 export default class Admin extends Component {
     state = {
@@ -26,13 +27,30 @@ export default class Admin extends Component {
     };
     // 折叠面板
     onCollapse = collapsed => {
-        console.log(collapsed);
+        // console.log(collapsed);
         this.setState({ collapsed });
     };
     logout = () => {
-        // 使用编程式路由进行成功的跳转
-        this.props.history.push("/");
+        message.info(`你点击了头像`);
     }
+    onClick = ({ item, key }) => {
+        if (key === '3') {
+            this.props.history.replace("/");
+            message.info(`退出登录`);
+
+        }
+        else {
+            message.info(`你点击了${key}`);
+        }
+    };
+    menu = (
+        <Menu onClick={this.onClick}>
+            <Menu.Item key="1">第一个</Menu.Item>
+            <Menu.Item key="2">2nd</Menu.Item>
+            <Menu.Divider />
+            <Menu.Item key="3">退出登录</Menu.Item>
+        </Menu>
+    );
     render() {
         return (
             <div className="admin">
@@ -71,6 +89,11 @@ export default class Admin extends Component {
                                     <Avatar size="large"
                                         src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1593055749419&di=c1176fb90f3422421d464baf08122959&imgtype=0&src=http%3A%2F%2Fa4.att.hudong.com%2F52%2F52%2F01200000169026136208529565374.jpg" />
                                 </span>
+                                <Dropdown overlay={this.menu}>
+                                    <a className="ant-dropdown-link" onClick={e => e.preventDefault()}>
+                                        改成用户名 <DownOutlined />
+                                    </a>
+                                </Dropdown>,
                             </div>
                         </Header>
                         <Content style={{ margin: '0 16px' }}>

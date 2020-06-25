@@ -15,6 +15,8 @@ import UserAdd from "../../components/user/UserAdd"
 import UserCounter from "../../components/user/UserCounter"
 import UserManager from "../../components/user/UserManager"
 import Error from "../404/404.jsx"
+import { Avatar, Badge } from 'antd'
+
 const { Header, Content, Footer, Sider } = Layout;
 const { SubMenu } = Menu;
 
@@ -22,11 +24,15 @@ export default class Admin extends Component {
     state = {
         collapsed: false,
     };
-
+    // 折叠面板
     onCollapse = collapsed => {
         console.log(collapsed);
         this.setState({ collapsed });
     };
+    logout = () => {
+        // 使用编程式路由进行成功的跳转
+        this.props.history.push("/");
+    }
     render() {
         return (
             <div className="admin">
@@ -51,7 +57,7 @@ export default class Admin extends Component {
                                     <Link to="/admin/userCount">统计用户</Link>
                                 </Menu.Item>
                             </SubMenu>
-{/*                             <SubMenu key="sub2" icon={<TeamOutlined />} title="好友管理">
+                            {/*                             <SubMenu key="sub2" icon={<TeamOutlined />} title="好友管理">
                                 <Menu.Item key="6">Team 1</Menu.Item>
                                 <Menu.Item key="8">Team 2</Menu.Item>
                             </SubMenu> */}
@@ -59,7 +65,14 @@ export default class Admin extends Component {
                         </Menu>
                     </Sider>
                     <Layout className="site-layout">
-                        <Header className="site-layout-header" style={{ padding: 0 }} />
+                        <Header className="site-layout-header" style={{ padding: 0 }}>
+                            <div className="right">
+                                <span className="avatar-item" onClick={this.logout}>
+                                    <Avatar size="large"
+                                        src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1593055749419&di=c1176fb90f3422421d464baf08122959&imgtype=0&src=http%3A%2F%2Fa4.att.hudong.com%2F52%2F52%2F01200000169026136208529565374.jpg" />
+                                </span>
+                            </div>
+                        </Header>
                         <Content style={{ margin: '0 16px' }}>
                             <Breadcrumb style={{ margin: '16px 0' }}>
                                 <Breadcrumb.Item>User</Breadcrumb.Item>

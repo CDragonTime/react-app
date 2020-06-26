@@ -8,7 +8,8 @@ import {
     SettingOutlined,
     WhatsAppOutlined,
     UserOutlined,
-    ShoppingCartOutlined
+    ShoppingCartOutlined,
+    DatabaseOutlined
 } from '@ant-design/icons';
 import { Menu } from 'antd';
 
@@ -25,6 +26,9 @@ export default class AdminMenu extends Component {
                 <Menu.Item key="2" icon={<DesktopOutlined />}>
                     <Link to="/admin/shop">商品图表</Link>
                 </Menu.Item>
+                <Menu.Item key="12" icon={<DatabaseOutlined />} title="分类管理">
+                    <Link to="/admin/category">分类管理</Link>
+                </Menu.Item>
                 <SubMenu key="sub1" icon={<UserOutlined />} title="用户管理">
                     <Menu.Item key="3">
                         <Link to="/admin/user/userAdd">增加用户</Link>
@@ -36,6 +40,7 @@ export default class AdminMenu extends Component {
                         <Link to="/admin/user/userCount">统计用户</Link>
                     </Menu.Item>
                 </SubMenu>
+
                 <SubMenu key="sub2" icon={<ShoppingCartOutlined />} title="订单管理">
                     <Menu.Item key="6">
                         <Link to="/admin/order/orderAdd">增加订单</Link>

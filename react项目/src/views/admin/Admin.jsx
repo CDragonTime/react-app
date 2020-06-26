@@ -34,7 +34,7 @@ export default class Admin extends Component {
                         <div className="logo" ><h1><WindowsOutlined /><WindowsOutlined rotate={180} /></h1></div>
                         <AdminMenu></AdminMenu>
                     </Sider>
-                    {/* 主题内容 */}
+                    {/* 右侧主体内容 */}
                     <Layout className="site-layout">
                         <AdminHeader></AdminHeader>
                         <AdminContent></AdminContent>

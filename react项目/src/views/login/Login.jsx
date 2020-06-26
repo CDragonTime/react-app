@@ -3,7 +3,7 @@ import { UserOutlined, LockOutlined } from '@ant-design/icons';
 import "./Login.css"
 import { getUserLogin } from "../../api/userApi.js"
 import { Form, Input, Button, message } from 'antd';
-import { Spin, Alert } from 'antd';
+import { Spin } from 'antd';
 import SimpleStore from "../../store/simpleStore.js"
 import StorageUtil from "../../utils/storageUtil"
 import {Redirect} from "react-router-dom"
@@ -15,7 +15,6 @@ export default class Login extends Component {
             // console.log(result.data)
             SimpleStore.data = result.data
             StorageUtil.saveUser(result.data)
-            // console.log(StorageUtil.getUser())
             this.props.history.replace("/admin/chart");
             message.success("登陆成功")
         } else {

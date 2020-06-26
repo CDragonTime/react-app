@@ -1,4 +1,4 @@
-// 封装一个防抖函数
+// 封装一个防抖函数,注意是直接调用
 export function debounce(fn,delay){
     let timeDelay = delay || 500
     let timer = null;

@@ -19,11 +19,20 @@
     /* background-color: rgb(0, 19, 121); */
   }
   .logo{
-    height: 63px;
+    height: 60px;
     background-image: url("./images/10.jpg");
     background-repeat:no-repeat;
     background-size: cover;
   }
+  .logo h1{
+    height: 60px;
+    line-height: 63px;
+    text-align: center;
+    font-size: 30px;
+    color: rgb(53, 245, 252);
+    -webkit-mask:linear-gradient(to right, rgb(195, 0, 255), transparent );
+  }
+
   /* 让ant中的布局自适应 */
   /* .ant-layout{ height: 100%; } */
   .right{

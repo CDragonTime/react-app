@@ -4,26 +4,32 @@ import "./Login.css"
 import { getUserLogin } from "../../api/userApi.js"
 import { Form, Input, Button, message } from 'antd';
 import { Spin, Alert } from 'antd';
+import SimpleStore from "../../store/simpleStore.js"
+import StorageUtil from "../../utils/storageUtil"
+import {Redirect} from "react-router-dom"
 export default class Login extends Component {
-    onFinish = (values) => {
+    onFinish = async (values) => {
         console.log(values)
-        getUserLogin(values).then((result) => {
-            console.log(result.code)
-            if (result.code === 200) {
-                // 使用编程式路由进行成功的跳转,登陆的时候应该替换
-                this.props.history.replace("/admin/chart");
-                message.success("登陆成功")
-            } else {
-                message.error("用户名或密码错误")
-            }
-        }).catch((error) => {
-            message.error("服务器没开，联系管理员22235467##")
-        })
+        let result = await getUserLogin(values)
+        if (result.code === 200) {
+            // console.log(result.data)
+            SimpleStore.data = result.data
+            StorageUtil.saveUser(result.data)
+            // console.log(StorageUtil.getUser())
+            this.props.history.replace("/admin/chart");
+            message.success("登陆成功")
+        } else {
+            message.error("用户名或密码错误")
+        }
     }
     render() {
+        console.log(StorageUtil.getUser())
+        if(StorageUtil.getUser()){
+            return <Redirect to="/admin/chart"></Redirect>
+        }
         return (
             <div className="login1">
-                <Spin tip="Loading..." className="loading" style={{display: "none"}}>
+                <Spin tip="Loading..." className="loading" style={{ display: "none" }}>
                 </Spin>
 
                 <div className="header">
